@@ -21,22 +21,22 @@ public class DecaMeter implements Distance<DecaMeter> {
 
     @Override
     public MilliMeter toMilliMeter() {
-        return Distance.millimeter(this.divide(BigDecimal.valueOf(10000)).getValue());
+        return Distance.millimeter(this.multiply(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public CentiMeter toCentiMeter() {
-        return Distance.centimeter(this.divide(BigDecimal.valueOf(1000)).getValue());
+        return Distance.centimeter(this.multiply(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public DeciMeter toDeciMeter() {
-        return Distance.decimeter(this.divide(BigDecimal.valueOf(100)).getValue());
+        return Distance.decimeter(this.multiply(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public Meter toMeter() {
-        return Distance.meter(this.divide(BigDecimal.valueOf(10)).getValue());
+        return Distance.meter(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -46,12 +46,12 @@ public class DecaMeter implements Distance<DecaMeter> {
 
     @Override
     public HectoMeter toHectoMeter() {
-        return Distance.hectometer(this.multiply(BigDecimal.valueOf(10)).getValue());
+        return Distance.hectometer(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
     public KiloMeter toKiloMeter() {
-        return Distance.kilometer(this.multiply(BigDecimal.valueOf(100)).getValue());
+        return Distance.kilometer(this.divide(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override

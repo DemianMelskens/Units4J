@@ -1,3 +1,5 @@
+import metric.distance.Distance;
+import metric.distance.Meter;
 import metric.weight.Gram;
 import metric.weight.KiloGram;
 import metric.weight.MilliGram;
@@ -15,10 +17,19 @@ public class Main {
                 Weight.kilogram(1.401)
         );
 
-        final Gram initial = Weight.gram(0);
+        final List<Distance<?>> distances = List.of(
+                Distance.millimeter(24),
+                Distance.meter(1),
+                Distance.kilometer(1.401)
+        );
 
-        Weight<?> result = weights.stream().reduce(initial, (acc, weight) -> acc = (Weight<?>) acc.add(weight));
+        final Gram initialGram = Weight.gram(0);
+        final Meter initialMeter = Distance.meter(0);
 
-        System.out.println(result);
+        Weight<?> gramResult = weights.stream().reduce(initialGram, (acc, weight) -> acc = (Weight<?>) acc.add(weight));
+        Distance<?> meterResult = distances.stream().reduce(initialMeter, (acc, distance) -> acc = (Distance<?>) acc.add(distance));
+
+        System.out.println(gramResult);
+        System.out.println(meterResult);
     }
 }

@@ -1,7 +1,6 @@
 package metric.distance;
 
 import metric.Unit;
-import metric.weight.*;
 
 import java.math.BigDecimal;
 
@@ -146,8 +145,8 @@ public interface Distance<T> extends Unit {
 
     T add(final KiloMeter kiloMeter);
 
-    default T add(final Weight<?> distance) {
-        switch (distance.getClass().getSimpleName()){
+    default T add(final Distance<?> distance) {
+        switch (distance.getClass().getSimpleName()) {
             case "MilliMeter":
                 return this.add((MilliMeter) distance);
             case "CentiMeter":
@@ -181,8 +180,8 @@ public interface Distance<T> extends Unit {
 
     T subtract(final KiloMeter kiloMeter);
 
-    default T subtract(final Weight<?> distance) {
-        switch (distance.getClass().getSimpleName()){
+    default T subtract(final Distance<?> distance) {
+        switch (distance.getClass().getSimpleName()) {
             case "MilliMeter":
                 return this.subtract((MilliMeter) distance);
             case "CentiMeter":

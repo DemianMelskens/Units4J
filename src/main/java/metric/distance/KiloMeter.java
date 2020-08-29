@@ -27,27 +27,27 @@ public class KiloMeter implements Distance<KiloMeter> {
 
     @Override
     public CentiMeter toCentiMeter() {
-        return Distance.centimeter(this.divide(BigDecimal.valueOf(100000)).getValue());
+        return Distance.centimeter(this.multiply(BigDecimal.valueOf(100000)).getValue());
     }
 
     @Override
     public DeciMeter toDeciMeter() {
-        return Distance.decimeter(this.divide(BigDecimal.valueOf(10000)).getValue());
+        return Distance.decimeter(this.multiply(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public Meter toMeter() {
-        return Distance.meter(this.divide(BigDecimal.valueOf(1000)).getValue());
+        return Distance.meter(this.multiply(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public DecaMeter toDecaMeter() {
-        return Distance.decameter(this.divide(BigDecimal.valueOf(100)).getValue());
+        return Distance.decameter(this.multiply(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public HectoMeter toHectoMeter() {
-        return Distance.hectometer(this.divide(BigDecimal.valueOf(10)).getValue());
+        return Distance.hectometer(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
