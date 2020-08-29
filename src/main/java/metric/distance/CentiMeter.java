@@ -91,37 +91,37 @@ public class CentiMeter implements Distance<CentiMeter>{
 
     @Override
     public CentiMeter subtract(MilliMeter milliMeter) {
-        return null;
+        return this.subtract(milliMeter.toCentiMeter());
     }
 
     @Override
     public CentiMeter subtract(CentiMeter centiMeter) {
-        return null;
+        return Distance.centimeter(value.subtract(centiMeter.getValue()));
     }
 
     @Override
     public CentiMeter subtract(DeciMeter deciMeter) {
-        return null;
+        return this.subtract(deciMeter.toCentiMeter());
     }
 
     @Override
-    public CentiMeter subtract(Meter gram) {
-        return null;
+    public CentiMeter subtract(Meter meter) {
+        return this.subtract(meter.toCentiMeter());
     }
 
     @Override
     public CentiMeter subtract(DecaMeter decaMeter) {
-        return null;
+        return this.subtract(decaMeter.toCentiMeter());
     }
 
     @Override
     public CentiMeter subtract(HectoMeter hectoMeter) {
-        return null;
+        return this.subtract(hectoMeter.toCentiMeter());
     }
 
     @Override
     public CentiMeter subtract(KiloMeter kiloMeter) {
-        return null;
+        return this.subtract(kiloMeter.toCentiMeter());
     }
 
     @Override

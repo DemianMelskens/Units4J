@@ -92,37 +92,37 @@ public class KiloMeter implements Distance<KiloMeter> {
 
     @Override
     public KiloMeter subtract(MilliMeter milliMeter) {
-        return null;
+        return this.subtract(milliMeter.toKiloMeter());
     }
 
     @Override
     public KiloMeter subtract(CentiMeter centiMeter) {
-        return null;
+        return this.subtract(centiMeter.toKiloMeter());
     }
 
     @Override
     public KiloMeter subtract(DeciMeter deciMeter) {
-        return null;
+        return this.subtract(deciMeter.toKiloMeter());
     }
 
     @Override
-    public KiloMeter subtract(Meter gram) {
-        return null;
+    public KiloMeter subtract(Meter meter) {
+        return this.subtract(meter.toKiloMeter());
     }
 
     @Override
     public KiloMeter subtract(DecaMeter decaMeter) {
-        return null;
+        return this.subtract(decaMeter.toKiloMeter());
     }
 
     @Override
     public KiloMeter subtract(HectoMeter hectoMeter) {
-        return null;
+        return this.subtract(hectoMeter.toKiloMeter());
     }
 
     @Override
     public KiloMeter subtract(KiloMeter kiloMeter) {
-        return null;
+        return Distance.kilometer(value.subtract(kiloMeter.getValue()));
     }
 
     @Override

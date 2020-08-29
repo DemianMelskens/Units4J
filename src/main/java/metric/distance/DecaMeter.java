@@ -91,37 +91,37 @@ public class DecaMeter implements Distance<DecaMeter> {
 
     @Override
     public DecaMeter subtract(MilliMeter milliMeter) {
-        return null;
+        return this.subtract(milliMeter.toDecaMeter());
     }
 
     @Override
     public DecaMeter subtract(CentiMeter centiMeter) {
-        return null;
+        return this.subtract(centiMeter.toDecaMeter());
     }
 
     @Override
     public DecaMeter subtract(DeciMeter deciMeter) {
-        return null;
+        return this.subtract(deciMeter.toDecaMeter());
     }
 
     @Override
-    public DecaMeter subtract(Meter gram) {
-        return null;
+    public DecaMeter subtract(Meter meter) {
+        return this.subtract(meter.toDecaMeter());
     }
 
     @Override
     public DecaMeter subtract(DecaMeter decaMeter) {
-        return null;
+        return Distance.decameter(value.subtract(decaMeter.getValue()));
     }
 
     @Override
     public DecaMeter subtract(HectoMeter hectoMeter) {
-        return null;
+        return this.subtract(hectoMeter.toDecaMeter());
     }
 
     @Override
     public DecaMeter subtract(KiloMeter kiloMeter) {
-        return null;
+        return this.subtract(kiloMeter.toDecaMeter());
     }
 
     @Override

@@ -91,37 +91,37 @@ public class Meter implements Distance<Meter> {
 
     @Override
     public Meter subtract(MilliMeter milliMeter) {
-        return null;
+        return this.subtract(milliMeter.toMeter());
     }
 
     @Override
     public Meter subtract(CentiMeter centiMeter) {
-        return null;
+        return this.subtract(centiMeter.toMeter());
     }
 
     @Override
     public Meter subtract(DeciMeter deciMeter) {
-        return null;
+        return this.subtract(deciMeter.toMeter());
     }
 
     @Override
-    public Meter subtract(Meter gram) {
-        return null;
+    public Meter subtract(Meter meter) {
+        return Distance.meter(value.subtract(meter.getValue()));
     }
 
     @Override
     public Meter subtract(DecaMeter decaMeter) {
-        return null;
+        return this.subtract(decaMeter.toMeter());
     }
 
     @Override
     public Meter subtract(HectoMeter hectoMeter) {
-        return null;
+        return this.subtract(hectoMeter.toMeter());
     }
 
     @Override
     public Meter subtract(KiloMeter kiloMeter) {
-        return null;
+        return this.subtract(kiloMeter.toMeter());
     }
 
     @Override

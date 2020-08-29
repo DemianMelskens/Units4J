@@ -91,37 +91,37 @@ public class MilliMeter implements Distance<MilliMeter> {
 
     @Override
     public MilliMeter subtract(MilliMeter milliMeter) {
-        return null;
+        return Distance.millimeter(value.subtract(milliMeter.getValue()));
     }
 
     @Override
     public MilliMeter subtract(CentiMeter centiMeter) {
-        return null;
+        return this.subtract(centiMeter.toMilliMeter());
     }
 
     @Override
     public MilliMeter subtract(DeciMeter deciMeter) {
-        return null;
+        return this.subtract(deciMeter.toMilliMeter());
     }
 
     @Override
-    public MilliMeter subtract(Meter gram) {
-        return null;
+    public MilliMeter subtract(Meter meter) {
+        return this.subtract(meter.toMilliMeter());
     }
 
     @Override
     public MilliMeter subtract(DecaMeter decaMeter) {
-        return null;
+        return this.subtract(decaMeter.toMilliMeter());
     }
 
     @Override
     public MilliMeter subtract(HectoMeter hectoMeter) {
-        return null;
+        return this.subtract(hectoMeter.toMilliMeter());
     }
 
     @Override
     public MilliMeter subtract(KiloMeter kiloMeter) {
-        return null;
+        return this.subtract(kiloMeter.toMilliMeter());
     }
 
     @Override

@@ -21,22 +21,22 @@ public class HectoMeter implements Distance<HectoMeter> {
 
     @Override
     public MilliMeter toMilliMeter() {
-        return Distance.millimeter(this.divide(BigDecimal.valueOf(100000)).getValue());
+        return Distance.millimeter(this.divide(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public CentiMeter toCentiMeter() {
-        return Distance.centimeter(this.divide(BigDecimal.valueOf(10000)).getValue());
+        return Distance.centimeter(this.divide(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public DeciMeter toDeciMeter() {
-        return Distance.decimeter(this.divide(BigDecimal.valueOf(1000)).getValue());
+        return Distance.decimeter(this.divide(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public Meter toMeter() {
-        return Distance.meter(this.divide(BigDecimal.valueOf(100)).getValue());
+        return Distance.meter(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -91,37 +91,37 @@ public class HectoMeter implements Distance<HectoMeter> {
 
     @Override
     public HectoMeter subtract(MilliMeter milliMeter) {
-        return null;
+        return this.subtract(milliMeter.toHectoMeter());
     }
 
     @Override
     public HectoMeter subtract(CentiMeter centiMeter) {
-        return null;
+        return this.subtract(centiMeter.toHectoMeter());
     }
 
     @Override
     public HectoMeter subtract(DeciMeter deciMeter) {
-        return null;
+        return this.subtract(deciMeter.toHectoMeter());
     }
 
     @Override
-    public HectoMeter subtract(Meter gram) {
-        return null;
+    public HectoMeter subtract(Meter meter) {
+        return this.subtract(meter.toHectoMeter());
     }
 
     @Override
     public HectoMeter subtract(DecaMeter decaMeter) {
-        return null;
+        return this.subtract(decaMeter.toHectoMeter());
     }
 
     @Override
     public HectoMeter subtract(HectoMeter hectoMeter) {
-        return null;
+        return Distance.hectometer(value.subtract(hectoMeter.getValue()));
     }
 
     @Override
     public HectoMeter subtract(KiloMeter kiloMeter) {
-        return null;
+        return this.subtract(kiloMeter.toHectoMeter());
     }
 
     @Override
