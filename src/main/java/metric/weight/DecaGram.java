@@ -2,7 +2,7 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class DecaGram implements Weight<BigDecimal, DecaGram> {
+public class DecaGram implements Weight<DecaGram> {
 
     private final BigDecimal value;
 
@@ -22,22 +22,22 @@ public class DecaGram implements Weight<BigDecimal, DecaGram> {
 
     @Override
     public MilliGram toMilliGram() {
-        return Weight.milligram(value * 10000);
+        return Weight.milligram(this.multiply(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public CentiGram toCentiGram() {
-        return Weight.centigram(value * 1000);
+        return Weight.centigram(this.multiply(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public DeciGram toDeciGram() {
-        return Weight.decigram(value * 100);
+        return Weight.decigram(this.multiply(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public Gram toGram() {
-        return Weight.gram(value * 10);
+        return Weight.gram(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -47,12 +47,12 @@ public class DecaGram implements Weight<BigDecimal, DecaGram> {
 
     @Override
     public HectoGram toHectoGram() {
-        return Weight.hectogram(value / 10);
+        return Weight.hectogram(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
     public KiloGram toKiloGram() {
-        return Weight.kilogram(value / 100);
+        return Weight.kilogram(this.divide(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
@@ -77,7 +77,7 @@ public class DecaGram implements Weight<BigDecimal, DecaGram> {
 
     @Override
     public DecaGram add(final DecaGram decaGram) {
-        return new DecaGram(this.value + decaGram.getValue());
+        return new DecaGram(this.value.add(decaGram.getValue()));
     }
 
     @Override
@@ -112,7 +112,7 @@ public class DecaGram implements Weight<BigDecimal, DecaGram> {
 
     @Override
     public DecaGram subtract(final DecaGram decaGram) {
-        return Weight.decagram(value - decaGram.getValue());
+        return Weight.decagram(value.subtract(decaGram.getValue()));
     }
 
     @Override
@@ -126,12 +126,12 @@ public class DecaGram implements Weight<BigDecimal, DecaGram> {
     }
 
     @Override
-    public DecaGram multiply(final Integer multiplier) {
-        return Weight.decagram(value * multiplier);
+    public DecaGram multiply(final BigDecimal multiplier) {
+        return Weight.decagram(value.multiply(multiplier));
     }
 
     @Override
-    public DecaGram divide(final Integer divider) {
-        return Weight.decagram(value * divider);
+    public DecaGram divide(final BigDecimal divider) {
+        return Weight.decagram(value.divide(divider));
     }
 }

@@ -2,7 +2,7 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class HectoGram implements Weight<BigDecimal, HectoGram> {
+public class HectoGram implements Weight<HectoGram> {
 
     private final BigDecimal value;
 
@@ -22,27 +22,27 @@ public class HectoGram implements Weight<BigDecimal, HectoGram> {
 
     @Override
     public MilliGram toMilliGram() {
-        return Weight.milligram(value * 100000);
+        return Weight.milligram(this.multiply(BigDecimal.valueOf(100000)).getValue());
     }
 
     @Override
     public CentiGram toCentiGram() {
-        return Weight.centigram(value * 10000);
+        return Weight.centigram(this.multiply(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public DeciGram toDeciGram() {
-        return Weight.decigram(value * 1000);
+        return Weight.decigram(this.multiply(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public Gram toGram() {
-        return Weight.gram(value * 100);
+        return Weight.gram(this.multiply(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public DecaGram toDecaGram() {
-        return Weight.decagram(value * 10);
+        return Weight.decagram(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class HectoGram implements Weight<BigDecimal, HectoGram> {
 
     @Override
     public KiloGram toKiloGram() {
-        return Weight.kilogram(value / 10);
+        return Weight.kilogram(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -82,7 +82,7 @@ public class HectoGram implements Weight<BigDecimal, HectoGram> {
 
     @Override
     public HectoGram add(final HectoGram hectoGram) {
-        return Weight.hectogram(value + hectoGram.getValue());
+        return Weight.hectogram(value.add( hectoGram.getValue()));
     }
 
     @Override
@@ -117,7 +117,7 @@ public class HectoGram implements Weight<BigDecimal, HectoGram> {
 
     @Override
     public HectoGram subtract(final HectoGram hectoGram) {
-        return Weight.hectogram(value - hectoGram.getValue());
+        return Weight.hectogram(value.subtract(hectoGram.getValue()));
     }
 
     @Override
@@ -126,12 +126,12 @@ public class HectoGram implements Weight<BigDecimal, HectoGram> {
     }
 
     @Override
-    public HectoGram multiply(final Integer multiplier) {
-        return Weight.hectogram(value * multiplier);
+    public HectoGram multiply(final BigDecimal multiplier) {
+        return Weight.hectogram(value.multiply(multiplier));
     }
 
     @Override
-    public HectoGram divide(final Integer divider) {
-        return Weight.hectogram(value * divider);
+    public HectoGram divide(final BigDecimal divider) {
+        return Weight.hectogram(value.divide(divider));
     }
 }

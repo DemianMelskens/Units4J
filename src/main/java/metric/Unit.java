@@ -1,5 +1,7 @@
 package metric;
 
-public interface Unit<T> {
-    T getValue();
+import java.math.BigDecimal;
+
+public interface Unit {
+    BigDecimal getValue();
 }

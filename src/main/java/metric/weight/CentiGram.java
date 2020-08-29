@@ -2,7 +2,7 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class CentiGram implements Weight<BigDecimal, CentiGram> {
+public class CentiGram implements Weight<CentiGram> {
 
     private final BigDecimal value;
 
@@ -22,7 +22,7 @@ public class CentiGram implements Weight<BigDecimal, CentiGram> {
 
     @Override
     public MilliGram toMilliGram() {
-        return Weight.milligram(this.multiply(10).getValue());
+        return Weight.milligram(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -32,27 +32,27 @@ public class CentiGram implements Weight<BigDecimal, CentiGram> {
 
     @Override
     public DeciGram toDeciGram() {
-        return Weight.decigram(this.divide(10).getValue());
+        return Weight.decigram(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
     public Gram toGram() {
-        return Weight.gram(this.divide(100).getValue());
+        return Weight.gram(this.divide(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public DecaGram toDecaGram() {
-        return Weight.decagram(this.divide(1000).getValue());
+        return Weight.decagram(this.divide(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public HectoGram toHectoGram() {
-        return Weight.hectogram(this.divide(10000).getValue());
+        return Weight.hectogram(this.divide(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public KiloGram toKiloGram() {
-        return Weight.kilogram(this.divide(100000).getValue());
+        return Weight.kilogram(this.divide(BigDecimal.valueOf(100000)).getValue());
     }
 
     @Override
@@ -126,12 +126,12 @@ public class CentiGram implements Weight<BigDecimal, CentiGram> {
     }
 
     @Override
-    public CentiGram multiply(final Integer multiplier) {
-        return Weight.centigram(value.multiply(BigDecimal.valueOf(multiplier)));
+    public CentiGram multiply(final BigDecimal multiplier) {
+        return Weight.centigram(value.multiply(multiplier));
     }
 
     @Override
-    public CentiGram divide(final Integer divider) {
-        return Weight.centigram(value.divide(BigDecimal.valueOf(divider)));
+    public CentiGram divide(final BigDecimal divider) {
+        return Weight.centigram(value.divide(divider));
     }
 }

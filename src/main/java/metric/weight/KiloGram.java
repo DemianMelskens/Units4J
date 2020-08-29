@@ -2,7 +2,7 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class KiloGram implements Weight<BigDecimal, KiloGram> {
+public class KiloGram implements Weight<KiloGram> {
 
     private final BigDecimal value;
 
@@ -22,32 +22,32 @@ public class KiloGram implements Weight<BigDecimal, KiloGram> {
 
     @Override
     public MilliGram toMilliGram() {
-        return Weight.milligram(value.multiply(BigDecimal.valueOf(1000000)));
+        return Weight.milligram(this.multiply(BigDecimal.valueOf(1000000)).getValue());
     }
 
     @Override
     public CentiGram toCentiGram() {
-        return Weight.centigram(value * 100000);
+        return Weight.centigram(this.multiply(BigDecimal.valueOf(100000)).getValue());
     }
 
     @Override
     public DeciGram toDeciGram() {
-        return Weight.decigram(value * 10000);
+        return Weight.decigram(this.multiply(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public Gram toGram() {
-        return Weight.gram(value * 1000);
+        return Weight.gram(this.multiply(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public DecaGram toDecaGram() {
-        return Weight.decagram(value * 100);
+        return Weight.decagram(this.multiply(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public HectoGram toHectoGram() {
-        return Weight.hectogram(value * 10);
+        return Weight.hectogram(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -87,7 +87,7 @@ public class KiloGram implements Weight<BigDecimal, KiloGram> {
 
     @Override
     public KiloGram add(final KiloGram kiloGram) {
-        return Weight.kilogram(value + kiloGram.getValue());
+        return Weight.kilogram(value.add(kiloGram.getValue()));
     }
 
     @Override
@@ -122,16 +122,16 @@ public class KiloGram implements Weight<BigDecimal, KiloGram> {
 
     @Override
     public KiloGram subtract(final KiloGram kiloGram) {
-        return Weight.kilogram(value - kiloGram.getValue());
+        return Weight.kilogram(value.subtract(kiloGram.getValue()));
     }
 
     @Override
-    public KiloGram multiply(final Integer multiplier) {
-        return Weight.kilogram(value * multiplier);
+    public KiloGram multiply(final BigDecimal multiplier) {
+        return Weight.kilogram(value.multiply(multiplier));
     }
 
     @Override
-    public KiloGram divide(final Integer divider) {
-        return Weight.kilogram(value * divider);
+    public KiloGram divide(final BigDecimal divider) {
+        return Weight.kilogram(value.divide(divider));
     }
 }

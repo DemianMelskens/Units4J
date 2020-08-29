@@ -2,7 +2,7 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class Gram implements Weight<BigDecimal, Gram> {
+public class Gram implements Weight<Gram> {
 
     private final BigDecimal value;
 
@@ -22,17 +22,17 @@ public class Gram implements Weight<BigDecimal, Gram> {
 
     @Override
     public MilliGram toMilliGram() {
-        return Weight.milligram(this.multiply(1000).getValue());
+        return Weight.milligram(this.multiply(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public CentiGram toCentiGram() {
-        return Weight.centigram(this.multiply(100).getValue());
+        return Weight.centigram(this.multiply(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public DeciGram toDeciGram() {
-        return Weight.decigram(this.multiply(10).getValue());
+        return Weight.decigram(this.multiply(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
@@ -42,17 +42,17 @@ public class Gram implements Weight<BigDecimal, Gram> {
 
     @Override
     public DecaGram toDecaGram() {
-        return Weight.decagram(this.divide(10).getValue());
+        return Weight.decagram(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
     public HectoGram toHectoGram() {
-        return Weight.hectogram(this.divide(100).getValue());
+        return Weight.hectogram(this.divide(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public KiloGram toKiloGram() {
-        return Weight.kilogram(this.divide(1000).getValue());
+        return Weight.kilogram(this.divide(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
@@ -126,12 +126,12 @@ public class Gram implements Weight<BigDecimal, Gram> {
     }
 
     @Override
-    public Gram multiply(final Integer multiplier) {
-        return Weight.gram(value.multiply(BigDecimal.valueOf(multiplier)));
+    public Gram multiply(final BigDecimal multiplier) {
+        return Weight.gram(value.multiply(multiplier));
     }
 
     @Override
-    public Gram divide(final Integer divider) {
-        return Weight.gram(value.divide(BigDecimal.valueOf(divider)));
+    public Gram divide(final BigDecimal divider) {
+        return Weight.gram(value.divide(divider));
     }
 }

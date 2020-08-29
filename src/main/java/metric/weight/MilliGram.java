@@ -2,7 +2,7 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class MilliGram implements Weight<BigDecimal, MilliGram> {
+public class MilliGram implements Weight<MilliGram> {
 
     private final BigDecimal value;
 
@@ -27,32 +27,32 @@ public class MilliGram implements Weight<BigDecimal, MilliGram> {
 
     @Override
     public CentiGram toCentiGram() {
-        return Weight.centigram(this.divide(10).getValue());
+        return Weight.centigram(this.divide(BigDecimal.valueOf(10)).getValue());
     }
 
     @Override
     public DeciGram toDeciGram() {
-        return Weight.decigram(this.divide(100).getValue());
+        return Weight.decigram(this.divide(BigDecimal.valueOf(100)).getValue());
     }
 
     @Override
     public Gram toGram() {
-        return Weight.gram(this.divide(1000).getValue());
+        return Weight.gram(this.divide(BigDecimal.valueOf(1000)).getValue());
     }
 
     @Override
     public DecaGram toDecaGram() {
-        return Weight.decagram(this.divide(10000).getValue());
+        return Weight.decagram(this.divide(BigDecimal.valueOf(10000)).getValue());
     }
 
     @Override
     public HectoGram toHectoGram() {
-        return Weight.hectogram(this.divide(100000).getValue());
+        return Weight.hectogram(this.divide(BigDecimal.valueOf(100000)).getValue());
     }
 
     @Override
     public KiloGram toKiloGram() {
-        return Weight.kilogram(this.divide(1000000).getValue());
+        return Weight.kilogram(this.divide(BigDecimal.valueOf(1000000)).getValue());
     }
 
     @Override
@@ -126,12 +126,12 @@ public class MilliGram implements Weight<BigDecimal, MilliGram> {
     }
 
     @Override
-    public MilliGram multiply(final Integer multiplier) {
-        return Weight.milligram(value.multiply(BigDecimal.valueOf(multiplier)));
+    public MilliGram multiply(final BigDecimal multiplier) {
+        return Weight.milligram(value.multiply(multiplier));
     }
 
     @Override
-    public MilliGram divide(final Integer divider) {
-        return Weight.milligram(value.divide(BigDecimal.valueOf(divider)));
+    public MilliGram divide(final BigDecimal divider) {
+        return Weight.milligram(value.divide(divider));
     }
 }
