@@ -1,4 +1,5 @@
 import metric.distance.Distance;
+import metric.surface.Surface;
 import metric.weight.Weight;
 
 import java.util.List;
@@ -24,7 +25,10 @@ public class Main {
         final Weight gramResult = weights.stream().reduce(initialGram, Weight::add);
         final Distance meterResult = distances.stream().reduce(initialMeter, Distance::add);
 
+        final Surface kilometerSquared = Surface.kilometer2(1);
+
         System.out.println(gramResult);
         System.out.println(meterResult);
+        System.out.println(kilometerSquared.toMilliMeter2());
     }
 }
