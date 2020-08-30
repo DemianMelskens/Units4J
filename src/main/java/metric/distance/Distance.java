@@ -4,7 +4,7 @@ import metric.Unit;
 
 import java.math.BigDecimal;
 
-public interface Distance<T> extends Unit {
+public interface Distance extends Unit {
     static MilliMeter millimeter(final Integer value) {
         return new MilliMeter(BigDecimal.valueOf(value));
     }
@@ -131,77 +131,11 @@ public interface Distance<T> extends Unit {
 
     KiloMeter toKiloMeter();
 
-    T add(final MilliMeter milliMeter);
+    Distance add(final Distance distance);
 
-    T add(final CentiMeter centiMeter);
+    Distance subtract(final Distance distance);
 
-    T add(final DeciMeter deciMeter);
+    Distance multiply(final BigDecimal multiplicand);
 
-    T add(final Meter gram);
-
-    T add(final DecaMeter decaMeter);
-
-    T add(final HectoMeter hectoMeter);
-
-    T add(final KiloMeter kiloMeter);
-
-    default T add(final Distance<?> distance) {
-        switch (distance.getClass().getSimpleName()) {
-            case "MilliMeter":
-                return this.add((MilliMeter) distance);
-            case "CentiMeter":
-                return this.add((CentiMeter) distance);
-            case "DeciMeter":
-                return this.add((DeciMeter) distance);
-            case "Meter":
-                return this.add((Meter) distance);
-            case "DecaMeter":
-                return this.add((DecaMeter) distance);
-            case "HectoMeter":
-                return this.add((HectoMeter) distance);
-            case "KiloMeter":
-                return this.add((KiloMeter) distance);
-            default:
-                throw new IllegalArgumentException(String.format("%s type is not supported!", distance.getClass().getName()));
-        }
-    }
-
-    T subtract(final MilliMeter milliMeter);
-
-    T subtract(final CentiMeter centiMeter);
-
-    T subtract(final DeciMeter deciMeter);
-
-    T subtract(final Meter gram);
-
-    T subtract(final DecaMeter decaMeter);
-
-    T subtract(final HectoMeter hectoMeter);
-
-    T subtract(final KiloMeter kiloMeter);
-
-    default T subtract(final Distance<?> distance) {
-        switch (distance.getClass().getSimpleName()) {
-            case "MilliMeter":
-                return this.subtract((MilliMeter) distance);
-            case "CentiMeter":
-                return this.subtract((CentiMeter) distance);
-            case "DeciMeter":
-                return this.subtract((DeciMeter) distance);
-            case "Meter":
-                return this.subtract((Meter) distance);
-            case "DecaMeter":
-                return this.subtract((DecaMeter) distance);
-            case "HectoMeter":
-                return this.subtract((HectoMeter) distance);
-            case "KiloMeter":
-                return this.subtract((KiloMeter) distance);
-            default:
-                throw new IllegalArgumentException(String.format("%s type is not supported!", distance.getClass().getName()));
-        }
-    }
-
-    T multiply(final BigDecimal multiplicand);
-
-    T divide(final BigDecimal divisor);
+    Distance divide(final BigDecimal divisor);
 }

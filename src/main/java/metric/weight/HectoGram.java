@@ -2,9 +2,9 @@ package metric.weight;
 
 import java.math.BigDecimal;
 
-public class HectoGram implements Weight<HectoGram> {
+public class HectoGram implements Weight {
 
-    private final BigDecimal value;
+    private BigDecimal value;
 
     protected HectoGram(final BigDecimal value) {
         this.value = value;
@@ -56,82 +56,26 @@ public class HectoGram implements Weight<HectoGram> {
     }
 
     @Override
-    public HectoGram add(final MilliGram milliGram) {
-        return this.add(milliGram.toHectoGram());
+    public Weight add(final Weight weight) {
+        this.value = this.value.add(weight.toHectoGram().getValue());
+        return this;
     }
 
     @Override
-    public HectoGram add(final CentiGram centiGram) {
-        return this.add(centiGram.toHectoGram());
+    public Weight subtract(final Weight weight) {
+        this.value = this.value.subtract(weight.toHectoGram().getValue());
+        return this;
     }
 
     @Override
-    public HectoGram add(final DeciGram deciGram) {
-        return this.add(deciGram.toHectoGram());
+    public Weight multiply(final BigDecimal multiplier) {
+        this.value = this.value.multiply(multiplier);
+        return this;
     }
 
     @Override
-    public HectoGram add(final Gram gram) {
-        return this.add(gram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram add(final DecaGram decaGram) {
-        return this.add(decaGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram add(final HectoGram hectoGram) {
-        return Weight.hectogram(value.add( hectoGram.getValue()));
-    }
-
-    @Override
-    public HectoGram add(final KiloGram kiloGram) {
-        return this.add(kiloGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram subtract(final MilliGram milliGram) {
-        return this.subtract(milliGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram subtract(final CentiGram centiGram) {
-        return this.subtract(centiGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram subtract(final DeciGram deciGram) {
-        return this.subtract(deciGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram subtract(final Gram gram) {
-        return this.subtract(gram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram subtract(final DecaGram decaGram) {
-        return this.subtract(decaGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram subtract(final HectoGram hectoGram) {
-        return Weight.hectogram(value.subtract(hectoGram.getValue()));
-    }
-
-    @Override
-    public HectoGram subtract(final KiloGram kiloGram) {
-        return this.subtract(kiloGram.toHectoGram());
-    }
-
-    @Override
-    public HectoGram multiply(final BigDecimal multiplier) {
-        return Weight.hectogram(value.multiply(multiplier));
-    }
-
-    @Override
-    public HectoGram divide(final BigDecimal divider) {
-        return Weight.hectogram(value.divide(divider));
+    public Weight divide(final BigDecimal divider) {
+        this.value = this.value.divide(divider);
+        return this;
     }
 }

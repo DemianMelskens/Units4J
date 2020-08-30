@@ -2,8 +2,8 @@ package metric.distance;
 
 import java.math.BigDecimal;
 
-public class Meter implements Distance<Meter> {
-    private final BigDecimal value;
+public class Meter implements Distance {
+    private BigDecimal value;
 
     protected Meter(final BigDecimal value) {
         this.value = value;
@@ -55,82 +55,26 @@ public class Meter implements Distance<Meter> {
     }
 
     @Override
-    public Meter add(MilliMeter milliMeter) {
-        return this.add(milliMeter.toMeter());
+    public Distance add(final Distance distance) {
+        this.value = this.value.add(distance.toMeter().getValue());
+        return this;
     }
 
     @Override
-    public Meter add(CentiMeter centiMeter) {
-        return this.add(centiMeter.toMeter());
+    public Distance subtract(final Distance distance) {
+        this.value = this.value.subtract(distance.toMeter().getValue());
+        return this;
     }
 
     @Override
-    public Meter add(DeciMeter deciMeter) {
-        return this.add(deciMeter.toMeter());
+    public Distance multiply(final BigDecimal multiplier) {
+        this.value = this.value.multiply(multiplier);
+        return this;
     }
 
     @Override
-    public Meter add(Meter meter) {
-        return Distance.meter(value.add(meter.getValue()));
-    }
-
-    @Override
-    public Meter add(DecaMeter decaMeter) {
-        return this.add(decaMeter.toMeter());
-    }
-
-    @Override
-    public Meter add(HectoMeter hectoMeter) {
-        return this.add(hectoMeter.toMeter());
-    }
-
-    @Override
-    public Meter add(KiloMeter kiloMeter) {
-        return this.add(kiloMeter.toMeter());
-    }
-
-    @Override
-    public Meter subtract(MilliMeter milliMeter) {
-        return this.subtract(milliMeter.toMeter());
-    }
-
-    @Override
-    public Meter subtract(CentiMeter centiMeter) {
-        return this.subtract(centiMeter.toMeter());
-    }
-
-    @Override
-    public Meter subtract(DeciMeter deciMeter) {
-        return this.subtract(deciMeter.toMeter());
-    }
-
-    @Override
-    public Meter subtract(Meter meter) {
-        return Distance.meter(value.subtract(meter.getValue()));
-    }
-
-    @Override
-    public Meter subtract(DecaMeter decaMeter) {
-        return this.subtract(decaMeter.toMeter());
-    }
-
-    @Override
-    public Meter subtract(HectoMeter hectoMeter) {
-        return this.subtract(hectoMeter.toMeter());
-    }
-
-    @Override
-    public Meter subtract(KiloMeter kiloMeter) {
-        return this.subtract(kiloMeter.toMeter());
-    }
-
-    @Override
-    public Meter multiply(BigDecimal multiplicand) {
-        return Distance.meter(value.multiply(multiplicand));
-    }
-
-    @Override
-    public Meter divide(BigDecimal divisor) {
-        return Distance.meter(value.divide(divisor));
+    public Distance divide(final BigDecimal divider) {
+        this.value = this.value.divide(divider);
+        return this;
     }
 }

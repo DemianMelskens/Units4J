@@ -4,7 +4,7 @@ import metric.Unit;
 
 import java.math.BigDecimal;
 
-public interface Weight<T> extends Unit {
+public interface Weight extends Unit {
 
     static MilliGram milligram(final Integer value) {
         return new MilliGram(BigDecimal.valueOf(value));
@@ -132,78 +132,12 @@ public interface Weight<T> extends Unit {
 
     KiloGram toKiloGram();
 
-    T add(final MilliGram milliGram);
+    Weight add(final Weight weight);
 
-    T add(final CentiGram centiGram);
+    Weight subtract(final Weight weight);
 
-    T add(final DeciGram deciGram);
+    Weight multiply(final BigDecimal multiplicand);
 
-    T add(final Gram gram);
-
-    T add(final DecaGram decaGram);
-
-    T add(final HectoGram hectoGram);
-
-    T add(final KiloGram kiloGram);
-
-    default T add(final Weight<?> weight) {
-        switch (weight.getClass().getSimpleName()){
-            case "MilliGram":
-                return this.add((MilliGram) weight);
-            case "CentiGram":
-                return this.add((CentiGram) weight);
-            case "DeciGram":
-                return this.add((DeciGram) weight);
-            case "Gram":
-                return this.add((Gram) weight);
-            case "DecaGram":
-                return this.add((DecaGram) weight);
-            case "HectoGram":
-                return this.add((HectoGram) weight);
-            case "KiloGram":
-                return this.add((KiloGram) weight);
-            default:
-                throw new IllegalArgumentException(String.format("%s type is not supported!", weight.getClass().getName()));
-        }
-    }
-
-    T subtract(final MilliGram milliGram);
-
-    T subtract(final CentiGram centiGram);
-
-    T subtract(final DeciGram deciGram);
-
-    T subtract(final Gram gram);
-
-    T subtract(final DecaGram decaGram);
-
-    T subtract(final HectoGram hectoGram);
-
-    T subtract(final KiloGram kiloGram);
-
-    default T subtract(final Weight<?> weight) {
-        switch (weight.getClass().getSimpleName()){
-            case "MilliGram":
-                return this.subtract((MilliGram) weight);
-            case "CentiGram":
-                return this.subtract((CentiGram) weight);
-            case "DeciGram":
-                return this.subtract((DeciGram) weight);
-            case "Gram":
-                return this.subtract((Gram) weight);
-            case "DecaGram":
-                return this.subtract((DecaGram) weight);
-            case "HectoGram":
-                return this.subtract((HectoGram) weight);
-            case "KiloGram":
-                return this.subtract((KiloGram) weight);
-            default:
-                throw new IllegalArgumentException(String.format("%s type is not supported!", weight.getClass().getName()));
-        }
-    }
-
-    T multiply(final BigDecimal multiplicand);
-
-    T divide(final BigDecimal divisor);
+    Weight divide(final BigDecimal divisor);
 
 }

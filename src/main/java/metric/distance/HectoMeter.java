@@ -2,8 +2,8 @@ package metric.distance;
 
 import java.math.BigDecimal;
 
-public class HectoMeter implements Distance<HectoMeter> {
-    private final BigDecimal value;
+public class HectoMeter implements Distance {
+    private BigDecimal value;
 
     protected HectoMeter(final BigDecimal value) {
         this.value = value;
@@ -55,82 +55,26 @@ public class HectoMeter implements Distance<HectoMeter> {
     }
 
     @Override
-    public HectoMeter add(MilliMeter milliMeter) {
-        return this.add(milliMeter.toHectoMeter());
+    public Distance add(final Distance distance) {
+        this.value = this.value.add(distance.toHectoMeter().getValue());
+        return this;
     }
 
     @Override
-    public HectoMeter add(CentiMeter centiMeter) {
-        return this.add(centiMeter.toHectoMeter());
+    public Distance subtract(final Distance distance) {
+        this.value = this.value.subtract(distance.toHectoMeter().getValue());
+        return this;
     }
 
     @Override
-    public HectoMeter add(DeciMeter deciMeter) {
-        return this.add(deciMeter.toHectoMeter());
+    public Distance multiply(final BigDecimal multiplier) {
+        this.value = this.value.multiply(multiplier);
+        return this;
     }
 
     @Override
-    public HectoMeter add(Meter meter) {
-        return this.add(meter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter add(DecaMeter decaMeter) {
-        return this.add(decaMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter add(HectoMeter hectoMeter) {
-        return Distance.hectometer(value.add(hectoMeter.getValue()));
-    }
-
-    @Override
-    public HectoMeter add(KiloMeter kiloMeter) {
-        return this.add(kiloMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter subtract(MilliMeter milliMeter) {
-        return this.subtract(milliMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter subtract(CentiMeter centiMeter) {
-        return this.subtract(centiMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter subtract(DeciMeter deciMeter) {
-        return this.subtract(deciMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter subtract(Meter meter) {
-        return this.subtract(meter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter subtract(DecaMeter decaMeter) {
-        return this.subtract(decaMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter subtract(HectoMeter hectoMeter) {
-        return Distance.hectometer(value.subtract(hectoMeter.getValue()));
-    }
-
-    @Override
-    public HectoMeter subtract(KiloMeter kiloMeter) {
-        return this.subtract(kiloMeter.toHectoMeter());
-    }
-
-    @Override
-    public HectoMeter multiply(BigDecimal multiplicand) {
-        return Distance.hectometer(value.multiply(multiplicand));
-    }
-
-    @Override
-    public HectoMeter divide(BigDecimal divisor) {
-        return Distance.hectometer(value.divide(divisor));
+    public Distance divide(final BigDecimal divider) {
+        this.value = this.value.divide(divider);
+        return this;
     }
 }
