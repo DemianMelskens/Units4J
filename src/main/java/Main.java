@@ -1,5 +1,6 @@
 import metric.distance.Distance;
 import metric.surface.Surface;
+import metric.volume.Volume;
 import metric.weight.Weight;
 
 import java.util.List;
@@ -26,9 +27,11 @@ public class Main {
         final Distance meterResult = distances.stream().reduce(initialMeter, Distance::add);
 
         final Surface kilometerSquared = Surface.kilometer2(1);
+        final Volume kilometerCubic = Volume.kilometer3(1);
 
         System.out.println(gramResult);
         System.out.println(meterResult);
         System.out.println(kilometerSquared.toMilliMeter2());
+        System.out.println(kilometerCubic.toMilliMeter3());
     }
 }
