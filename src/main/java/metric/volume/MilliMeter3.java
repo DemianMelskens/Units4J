@@ -55,6 +55,41 @@ public class MilliMeter3 implements Volume {
     }
 
     @Override
+    public MilliLiter toMilliLiter() {
+        return Volume.milliliter(this.divide(BigDecimal.valueOf(Math.pow(10, 3))).getValue());
+    }
+
+    @Override
+    public CentiLiter toCentiLiter() {
+        return Volume.centiliter(this.divide(BigDecimal.valueOf(Math.pow(10, 4))).getValue());
+    }
+
+    @Override
+    public DeciLiter toDeciLiter() {
+        return Volume.deciliter(this.divide(BigDecimal.valueOf(Math.pow(10, 5))).getValue());
+    }
+
+    @Override
+    public Liter toLiter() {
+        return Volume.liter(this.divide(BigDecimal.valueOf(Math.pow(10, 6))).getValue());
+    }
+
+    @Override
+    public DecaLiter toDecaLiter() {
+        return Volume.decaliter(this.divide(BigDecimal.valueOf(Math.pow(10, 7))).getValue());
+    }
+
+    @Override
+    public HectoLiter toHectoLiter() {
+        return Volume.hectoliter(this.divide(BigDecimal.valueOf(Math.pow(10, 8))).getValue());
+    }
+
+    @Override
+    public KiloLiter toKiloLiter() {
+        return Volume.kiloliter(this.divide(BigDecimal.valueOf(Math.pow(10, 9))).getValue());
+    }
+
+    @Override
     public Volume add(final Volume volume) {
         this.value = this.value.add(volume.toMilliMeter3().getValue());
         return this;

@@ -1,6 +1,7 @@
 package metric.volume;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 public class DeciMeter3 implements Volume {
     private BigDecimal value;
@@ -52,6 +53,41 @@ public class DeciMeter3 implements Volume {
     @Override
     public KiloMeter3 toKiloMeter3() {
         return Volume.kilometer3(this.divide(BigDecimal.valueOf(Math.pow(10, 12))).getValue());
+    }
+
+    @Override
+    public MilliLiter toMilliLiter() {
+        return Volume.milliliter(this.multiply(BigDecimal.valueOf(Math.pow(10, 3))).getValue());
+    }
+
+    @Override
+    public CentiLiter toCentiLiter() {
+        return Volume.centiliter(this.multiply(BigDecimal.valueOf(Math.pow(10, 2))).getValue());
+    }
+
+    @Override
+    public DeciLiter toDeciLiter() {
+        return Volume.deciliter(this.multiply(BigDecimal.valueOf(Math.pow(10, 1))).getValue());
+    }
+
+    @Override
+    public Liter toLiter() {
+        return Volume.liter(this.value);
+    }
+
+    @Override
+    public DecaLiter toDecaLiter() {
+        return Volume.decaliter(this.divide(BigDecimal.valueOf(Math.pow(10, 1))).getValue());
+    }
+
+    @Override
+    public HectoLiter toHectoLiter() {
+        return Volume.hectoliter(this.divide(BigDecimal.valueOf(Math.pow(10, 2))).getValue());
+    }
+
+    @Override
+    public KiloLiter toKiloLiter() {
+        return Volume.kiloliter(this.divide(BigDecimal.valueOf(Math.pow(10, 3))).getValue());
     }
 
     @Override

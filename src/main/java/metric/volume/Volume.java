@@ -113,6 +113,10 @@ public interface Volume extends Unit {
         return new KiloMeter3(BigDecimal.valueOf(value));
     }
 
+    static KiloMeter3 kilometer3(final BigDecimal value) {
+        return new KiloMeter3(value);
+    }
+
     static MilliLiter milliliter(final Integer value) {
         return new MilliLiter(BigDecimal.valueOf(value));
     }
@@ -221,8 +225,8 @@ public interface Volume extends Unit {
         return new KiloLiter(BigDecimal.valueOf(value));
     }
 
-    static KiloMeter3 kilometer3(final BigDecimal value) {
-        return new KiloMeter3(value);
+    static KiloLiter kiloliter(final BigDecimal value) {
+        return new KiloLiter(value);
     }
 
     MilliMeter3 toMilliMeter3();
@@ -238,6 +242,20 @@ public interface Volume extends Unit {
     HectoMeter3 toHectoMeter3();
 
     KiloMeter3 toKiloMeter3();
+
+    MilliLiter toMilliLiter();
+
+    CentiLiter toCentiLiter();
+
+    DeciLiter toDeciLiter();
+
+    Liter toLiter();
+
+    DecaLiter toDecaLiter();
+
+    HectoLiter toHectoLiter();
+
+    KiloLiter toKiloLiter();
 
     Volume add(final Volume volume);
 
